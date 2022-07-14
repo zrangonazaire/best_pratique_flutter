@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:best_pratique/repository/users.repository.dart';
 
 abstract class UserEvent {}
-
 class SearchUsersEvent extends UserEvent {
   final String keyword;
   final int page;
@@ -105,7 +104,6 @@ class UsersBloc extends Bloc<UserEvent, UsersState> {
     });
     on((NextPageEvent event, emit) async {
       currentEvent=event;
-print("Nex Page ${event.page}");
       try {
         ListUsers listUsers = await usersRepository.searchUsers(
             event.keyword, event.page, event.pageSize);
